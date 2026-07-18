@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio of Faraz, a video editor and graphic designer with 148K+ YouTube subscribers and 18M+ views. Currently at Image Classes Aligarh. Open for freelance.">
+    <title>Faraz — Video Editor & Graphic Designer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --primary: #1a56db;
+            --accent: #f59e0b;
+            --dark: #0f172a;
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --text-muted: #94a3b8;
+            --bg: #eef2ff;
+            --glass: rgba(255,255,255,0.55);
+            --glass-border: rgba(255,255,255,0.8);
+            --shadow: rgba(30,64,175,0.10);
+        }
+
+        body.dark-mode {
+            --text-primary: #f1f5f9;
+            --text-secondary: #cbd5e1;
+            --text-muted: #64748b;
+            --bg: #070b18;
+            --glass: rgba(15,23,42,0.60);
+            --glass-border: rgba(255,255,255,0.07);
+            --shadow: rgba(0,0,0,0.45);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', sans-serif;
+            background: var(--bg);
+            color: var(--text-primary);
+            transition: background 0.4s, color 0.4s;
+            overflow-x: hidden;
+        }
+
+        /* Animated background blobs */
+        .bg-blobs {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.35;
+            animation: floatBlob 12s ease-in-out infinite;
+        }
+        body.dark-mode .blob { opacity: 0.18; }
+        .blob1 { width: 600px; height: 600px; background: radial-gradient(circle, #3b82f6, #1a56db); top: -150px; left: -100px; animation-delay: 0s; }
+        .blob2 { width: 500px; height: 500px; background: radial-gradient(circle, #f59e0b, #d97706); top: 30%; right: -150px; animation-delay: -4s; }
+        .blob3 { width: 400px; height: 400px; background: radial-gradient(circle, #818cf8, #4f46e5); bottom: 10%; left: 20%; animation-delay: -8s; }
+        @keyframes floatBlob {
+            0%, 100% { transform: translate(0,0) scale(1); }
+            33% { transform: translate(30px,-40px) scale(1.05); }
+            66% { transform: translate(-20px,30px) scale(0.95); }
+        }
+
+        /* NAV */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 0.75rem 2rem;
+        }
+        nav {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--glass);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid var(--glass-border);
+            border-radius: 18px;
+            padding: 0.75rem 1.75rem;
+            box-shadow: 0 8px 32px var(--shadow);
+            transition: all 0.4s;
+        }
+        .logo {
+            font-weight: 800;
+            font-size: 24px;
+            background: linear-gradient(135deg, var(--primary), #7c3aed);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -1px;
+        }
+        .nav-center { display: flex; gap: 0.25rem; align-items: center; flex-wrap: wrap; }
+        .nav-link {
+            color: #1e293b;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 13px;
+            padding: 0.4rem 0.85rem;
+            border-radius: 10px;
+            transition: all 0.25s;
+        }
+        body.dark-mode .nav-link { color: #e2e8f0; }
+        .nav-link:hover {
+            background: rgba(26,86,219,0.1);
+            color: var(--primary);
+        }
+        .theme-toggle {
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            width: 48px; height: 26px;
+            border-radius: 13px;
+            cursor: pointer;
+            display: flex; align-items: center; padding: 2px;
+            transition: all 0.3s;
+            margin-left: 0.5rem;
+        }
+        .theme-toggle.dark { background: var(--primary); }
+        .theme-toggle-icon {
+            width: 22px; height: 22px;
+            border-radius: 50%;
+            background: white;
+            display: flex; align-items: center; justify-content: center;
+            transition: transform 0.3s;
+            font-size: 12px;
+        }
+        .theme-toggle.dark .theme-toggle-icon { transform: translateX(22px); }
+
+        /* HERO */
+        .hero {
+            position: relative;
+            z-index: 1;
+            min-height: 90vh;
+            display: flex; align-items: center; justify-content: center;
+            text-align: center;
+            padding: 5rem 2rem 6rem;
+        }
+        .hero-content { max-width: 860px; }
+
+        .hero-badges {
+            display: flex; gap: 0.6rem; justify-content: center;
+            flex-wrap: wrap; margin-bottom: 2rem;
+        }
+        .badge {
+            background: var(--glass);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--glass-border);
+            padding: 0.45rem 1rem;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            color: #1e293b;
+            box-shadow: 0 2px 12px var(--shadow);
+            transition: transform 0.3s;
+        }
+        body.dark-mode .badge { color: #e2e8f0; }
+        .badge:hover { transform: translateY(-2px); }
+
+        .hero h1 {
+            font-size: clamp(38px, 6vw, 68px);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.25rem;
+            letter-spacing: -2px;
+            background: linear-gradient(135deg, #0f172a 0%, #1a56db 55%, #4f46e5 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        body.dark-mode .hero h1 {
+            background: linear-gradient(135deg, #f1f5f9 0%, #93c5fd 55%, #a5b4fc 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+        }
+        .hero-description {
+            font-size: 18px;
+            color: #334155;
+            max-width: 640px;
+            margin: 0 auto 2.5rem;
+            line-height: 1.7;
+            font-weight: 450;
+        }
+        body.dark-mode .hero-description {
+            color: #94a3b8;
+        }
+
+        /* GLASS BUTTONS */
+        .hero-cta { display: flex; gap: 0.85rem; justify-content: center; flex-wrap: wrap; margin-bottom: 3rem; }
+        .btn-glass {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 12px 26px;
+            border-radius: 14px;
+            border: 1px solid var(--glass-border);
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            color: #0f172a;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+            box-shadow: 0 4px 16px var(--shadow), inset 0 1px 0 rgba(255,255,255,0.5);
+            position: relative;
+            overflow: hidden;
+        }
+        body.dark-mode .btn-glass { color: #f1f5f9; }
+        .btn-glass::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, transparent 60%);
+            border-radius: 14px;
+        }
+        .btn-glass:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 12px 32px var(--shadow), inset 0 1px 0 rgba(255,255,255,0.6);
+            border-color: rgba(2,59,230,0.3);
+        }
+        .btn-glass.yt { border-color: rgba(255,0,0,0.25); }
+        .btn-glass.yt i { color: #ff0000; }
+        .btn-glass.ig { border-color: rgba(225,48,108,0.25); }
+        .btn-glass.ig i { color: #e1306c; }
+        .btn-glass.wa { border-color: rgba(37,211,102,0.25); }
+        .btn-glass.wa i { color: #25d366; }
+
+        /* STATS */
+        .stats {
+            display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap;
+            padding-top: 2.5rem;
+            border-top: 1px solid var(--glass-border);
+        }
+        .stat-card {
+            background: rgba(255,255,255,0.75);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.9);
+            border-radius: 20px;
+            padding: 1.75rem 2.25rem;
+            text-align: center;
+            box-shadow: 0 4px 24px rgba(30,64,175,0.10), inset 0 1px 0 rgba(255,255,255,0.8);
+            transition: transform 0.3s;
+            min-width: 160px;
+        }
+        body.dark-mode .stat-card {
+            background: rgba(30,41,59,0.75);
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+        .stat-card:hover { transform: translateY(-4px); }
+        .stat-number {
+            font-size: 42px; font-weight: 800;
+            color: #1a56db;
+            letter-spacing: -1px;
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+        body.dark-mode .stat-number { color: #60a5fa; }
+        .stat-label {
+            font-size: 11px;
+            font-weight: 700;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-top: 4px;
+        }
+        body.dark-mode .stat-label { color: #94a3b8; }
+
+        /* CONTENT */
+        .content { max-width: 1200px; margin: 0 auto; padding: 4rem 2rem; position: relative; z-index: 1; }
+        section { margin-bottom: 6rem; }
+
+        h2 {
+            font-size: clamp(26px, 3vw, 36px);
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            letter-spacing: -1px;
+        }
+        .section-subtitle { color: var(--text-secondary); font-size: 15px; margin-bottom: 2rem; font-weight: 500; }
+        .section-header { margin-bottom: 2.5rem; }
+
+        /* VIDEO CARDS */
+        .featured-videos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+        .featured-video-card {
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px var(--shadow), inset 0 1px 0 rgba(255,255,255,0.4);
+            transition: all 0.4s cubic-bezier(0.4,0,0.2,1);
+        }
+        .featured-video-card:hover {
+            transform: translateY(-10px) scale(1.01);
+            box-shadow: 0 24px 48px var(--shadow), inset 0 1px 0 rgba(255,255,255,0.5);
+            border-color: rgba(2,59,230,0.3);
+        }
+        .youtube-container {
+            width: 100%; height: 200px;
+            background: #000;
+            position: relative; overflow: hidden;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .youtube-container iframe { width: 100%; height: 100%; border: none; }
+        .play-button {
+            position: absolute;
+            width: 52px; height: 52px;
+            background: rgba(255,255,255,0.18);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.45);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 18px;
+            color: white;
+            transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+            z-index: 10;
+            box-shadow: 0 2px 16px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.3);
+            opacity: 0.82;
+            z-index: 15;
+        }
+        .youtube-container:hover .play-button {
+            transform: scale(1.1);
+            background: rgba(255,255,255,0.28);
+            opacity: 1;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.4);
+        }
+
+        /* Dark overlay on thumbnail - only show on hover */
+        .youtube-container::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.15);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 5;
+        }
+        .youtube-container:hover::after { opacity: 1; }
+        .featured-badge {
+            position: absolute; top: 12px; right: 12px;
+            background: var(--glass);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--glass-border);
+            color: #0f172a;
+            padding: 0.35rem 0.85rem;
+            border-radius: 20px; font-size: 11px; font-weight: 700; z-index: 10;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+        body.dark-mode .featured-badge { color: #e2e8f0; }
+
+        /* DRIVE VIDEO GRID */
+        .videos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 1.5rem;
+        }
+        .video-card {
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px var(--shadow), inset 0 1px 0 rgba(255,255,255,0.4);
+            transition: all 0.4s cubic-bezier(0.4,0,0.2,1);
+        }
+        .video-card:hover {
+            transform: translateY(-8px) scale(1.01);
+            box-shadow: 0 20px 40px var(--shadow);
+            border-color: rgba(2,59,230,0.25);
+        }
+        .video-container { width: 100%; height: 340px; background: #000; overflow: hidden; }
+        .video-container iframe { width: 100%; height: 100%; border: none; }
+        .video-info { text-align: center; padding: 1rem; }
+        .video-badge {
+            display: inline-block;
+            background: var(--glass);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            padding: 0.4rem 1rem;
+            border-radius: 20px; font-size: 11px; font-weight: 700;
+            color: #1a56db;
+            box-shadow: 0 2px 8px var(--shadow);
+            font-weight: 700;
+        }
+        body.dark-mode .video-badge { color: #93c5fd; }
+
+        /* ABOUT */
+        .about-card {
+            background: var(--glass);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 2.5rem;
+            box-shadow: 0 8px 32px var(--shadow), inset 0 1px 0 rgba(255,255,255,0.5);
+        }
+        .about-text { font-size: 16px; line-height: 1.8; color: #334155; margin-bottom: 1.25rem; font-weight: 450; }
+        body.dark-mode .about-text { color: #94a3b8; }
+        .current-role {
+            background: linear-gradient(135deg, rgba(2,59,230,0.08), rgba(255,183,0,0.06));
+            border: 1px solid rgba(2,59,230,0.15);
+            border-radius: 16px;
+            padding: 1.5rem 2rem;
+            margin-top: 1.5rem;
+        }
+        .role-title { font-weight: 700; color: var(--primary); margin-bottom: 0.4rem; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; }
+
+        /* SERVICES */
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1rem; }
+        .service-item {
+            background: var(--glass);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 1.25rem;
+            text-align: center;
+            font-weight: 600; font-size: 14px;
+            color: #1e293b;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 2px 12px var(--shadow), inset 0 1px 0 rgba(255,255,255,0.4);
+        }
+        body.dark-mode .service-item { color: #e2e8f0; }
+        .service-item:hover {
+            transform: translateY(-4px);
+            border-color: rgba(2,59,230,0.3);
+            color: var(--primary);
+            box-shadow: 0 10px 24px var(--shadow);
+        }
+
+        /* CONTACT */
+        .contact-cta {
+            background: linear-gradient(135deg, rgba(2,59,230,0.85), rgba(15,45,159,0.9));
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 28px;
+            padding: 4rem 2rem;
+            text-align: center;
+            box-shadow: 0 24px 64px rgba(2,59,230,0.3), inset 0 1px 0 rgba(255,255,255,0.15);
+        }
+        .contact-cta h2 { color: white; margin-bottom: 0.75rem; letter-spacing: -1px; }
+        .contact-cta h2::after { display: none; }
+        .contact-cta p { font-size: 16px; color: rgba(255,255,255,0.8); margin-bottom: 2rem; }
+        .contact-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+        .contact-btn {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 13px 28px;
+            border-radius: 14px;
+            border: 1px solid rgba(255,255,255,0.3);
+            background: rgba(255,255,255,0.12);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            color: white;
+            text-decoration: none;
+            font-weight: 700; font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.2);
+        }
+        .contact-btn:hover {
+            background: rgba(255,255,255,0.22);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.3);
+        }
+
+        /* FOOTER */
+        footer {
+            position: relative; z-index: 1;
+            background: var(--glass);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border-top: 1px solid var(--glass-border);
+            padding: 3rem 2rem;
+            text-align: center;
+            color: var(--text-secondary);
+        }
+        .footer-content { max-width: 1200px; margin: 0 auto; }
+        .footer-links { display: flex; gap: 2rem; justify-content: center; margin-top: 1.25rem; flex-wrap: wrap; }
+        .footer-link { color: var(--primary); text-decoration: none; font-weight: 600; font-size: 14px; transition: color 0.3s; }
+        .footer-link:hover { color: var(--accent); }
+
+        /* SCROLL ANIMATIONS */
+        .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        @media (max-width: 768px) {
+            .hero { padding: 3rem 1.5rem 4rem; }
+            .nav-center { gap: 0; }
+            .nav-link { font-size: 12px; padding: 0.35rem 0.6rem; }
+            .videos-grid { grid-template-columns: 1fr; }
+            .featured-videos-grid { grid-template-columns: 1fr; }
+            .video-container { height: 400px; }
+            .contact-buttons { flex-direction: column; align-items: center; }
+            .stats { gap: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-blobs">
+        <div class="blob blob1"></div>
+        <div class="blob blob2"></div>
+        <div class="blob blob3"></div>
+    </div>
+
+    <header>
+        <nav>
+            <div class="logo">faraz.</div>
+            <div class="nav-center">
+                <a href="#about" class="nav-link">About</a>
+                <a href="#best-work" class="nav-link">Best Work</a>
+                <a href="#shorts" class="nav-link">Work</a>
+                <a href="#vlog-edits" class="nav-link">Vlogs</a>
+                <a href="#contact" class="nav-link">Contact</a>
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                    <div class="theme-toggle-icon">☀️</div>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badges">
+                <div class="badge">Videographer</div>
+                <div class="badge">Video Editor</div>
+                <div class="badge">Open for Freelance</div>
+                <div class="badge">Open for Full Time</div>
+            </div>
+            <h1>Frames that speak.<br>Designs that move.</h1>
+            <p class="hero-description">
+                Based in Aligarh, India — turning raw footage and blank canvases into stories worth watching. With 148K+ subscribers and 18M+ views on YouTube, the work speaks for itself.
+            </p>
+            <div class="hero-cta">
+                <a href="https://www.youtube.com/c/Farazpsd" class="btn-glass yt">
+                    <i class="fab fa-youtube"></i> YouTube
+                </a>
+                <a href="https://www.instagram.com/farazpsd_/" class="btn-glass ig">
+                    <i class="fab fa-instagram"></i> Instagram
+                </a>
+                <a href="https://api.whatsapp.com/send?phone=917906787514&text=Hey%2C%20Faraz" class="btn-glass wa">
+                    <i class="fab fa-whatsapp"></i> Connect
+                </a>
+            </div>
+            <div class="stats">
+                <div class="stat-card">
+                    <div class="stat-number">148K+</div>
+                    <div class="stat-label">YouTube Subscribers</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">18M+</div>
+                    <div class="stat-label">Total Views</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">23K+</div>
+                    <div class="stat-label">Instagram Followers</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="content">
+        <section id="featured" class="reveal">
+            <div class="section-header">
+                <h2>Most Viral Shorts</h2>
+                <p class="section-subtitle">My most viewed short-form content with highest engagement</p>
+            </div>
+            <div class="featured-videos-grid">
+                <div class="featured-video-card">
+                    <div class="youtube-container" onclick="playVideo('5qiDTdV0nNQ', this)" style="cursor:pointer;background-image:url('https://img.youtube.com/vi/5qiDTdV0nNQ/maxresdefault.jpg');background-size:cover;background-position:center;">
+                        <span class="featured-badge">VIRAL</span>
+                        <div class="play-button"><i class="fas fa-play"></i></div>
+                    </div>
+                </div>
+                <div class="featured-video-card">
+                    <div class="youtube-container" onclick="playVideo('77YHnTXeLUI', this)" style="cursor:pointer;background-image:url('https://img.youtube.com/vi/77YHnTXeLUI/maxresdefault.jpg');background-size:cover;background-position:center;">
+                        <span class="featured-badge">VIRAL</span>
+                        <div class="play-button"><i class="fas fa-play"></i></div>
+                    </div>
+                </div>
+                <div class="featured-video-card">
+                    <div class="youtube-container" onclick="playVideo('hPkB_lrbB0Q', this)" style="cursor:pointer;background-image:url('https://img.youtube.com/vi/hPkB_lrbB0Q/maxresdefault.jpg');background-size:cover;background-position:center;">
+                        <span class="featured-badge">VIRAL</span>
+                        <div class="play-button"><i class="fas fa-play"></i></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="long-videos" class="reveal">
+            <div class="section-header">
+                <h2>Full Length Videos</h2>
+                <p class="section-subtitle">Complete tutorials and in-depth content from my YouTube channel</p>
+            </div>
+            <div class="featured-videos-grid">
+                <div class="featured-video-card">
+                    <div class="youtube-container" onclick="playVideo('C-sgT6efHFQ', this)" style="cursor:pointer;background-image:url('https://img.youtube.com/vi/C-sgT6efHFQ/maxresdefault.jpg');background-size:cover;background-position:center;">
+                        <span class="featured-badge">TUTORIAL</span>
+                        <div class="play-button"><i class="fas fa-play"></i></div>
+                    </div>
+                </div>
+                <div class="featured-video-card">
+                    <div class="youtube-container" onclick="playVideo('dDBX37uu2jM', this)" style="cursor:pointer;background-image:url('https://img.youtube.com/vi/dDBX37uu2jM/maxresdefault.jpg');background-size:cover;background-position:center;">
+                        <span class="featured-badge">TUTORIAL</span>
+                        <div class="play-button"><i class="fas fa-play"></i></div>
+                    </div>
+                </div>
+                <div class="featured-video-card">
+                    <div class="youtube-container" onclick="playVideo('MxOoRsRNV-E', this)" style="cursor:pointer;background-image:url('https://img.youtube.com/vi/MxOoRsRNV-E/maxresdefault.jpg');background-size:cover;background-position:center;">
+                        <span class="featured-badge">TUTORIAL</span>
+                        <div class="play-button"><i class="fas fa-play"></i></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="best-work" class="reveal">
+            <div class="section-header">
+                <h2>Best Work</h2>
+                <p class="section-subtitle">Handpicked short-form edits — reels, ads & social media content</p>
+            </div>
+            <div class="videos-grid">
+                <div class="video-card">
+                    <div class="video-container">
+                        <iframe src="https://drive.google.com/file/d/1nG52dmYTM3A6NudzvKQf1eeZ4J-_iiIQ/preview" allowfullscreen loading="lazy"></iframe>
+                    </div>
+                    <div class="video-info">
+                        <div class="video-badge">SOCIAL MEDIA AD</div>
+                    </div>
+                </div>
+                <div class="video-card">
+                    <div class="video-container">
+                        <iframe src="https://drive.google.com/file/d/1r8tmc7jglANbFvye1psBdesvV8b2bIhM/preview" allowfullscreen loading="lazy"></iframe>
+                    </div>
+                </div>
+                <div class="video-card">
+                    <div class="video-container">
+                        <iframe src="https://drive.google.com/file/d/14VVyP4j6vUZJzkiqKrt7DkwDldZQ5n6K/preview" allowfullscreen loading="lazy"></iframe>
+                    </div>
+                </div>
+                <div class="video-card">
+                    <div class="video-container">
+                        <iframe src="https://drive.google.com/file/d/1Mo7hOVS32HYVwPa7VB8K9iMOxTee-K3L/preview" allowfullscreen loading="lazy"></iframe>
+                    </div>
+                </div>
+                <div class="video-card">
+                    <div class="video-container">
+                        <iframe src="https://drive.google.com/file/d/1oUiAczWZWqjbt1NHD83Gg55Z7smYkL5g/preview" allowfullscreen loading="lazy"></iframe>
+                    </div>
+                </div>
+                <div class="video-card">
+                    <div class="video-container">
+                        <iframe src="https://drive.google.com/file/d/1gZx0FUutjEkt2R2EgHc77AEWfIQUsLmK/preview" allowfullscreen loading="lazy"></iframe>
+                    </div>
+                    <div class="video-info">
+                        <div class="video-badge">AI GENERATED</div>
+                    </div>
+                </div>
+                <div class="video-card">
+                    <div class="video-container">
+                        <iframe src="https://drive.google.com/file/d/16fr74GGrvap1qpC89_2_9hUGlMpB7pxd/preview" allowfullscreen loading="lazy"></iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="shorts" class="reveal">
+            <div class="section-header">
+                <h2>Recent Work</h2>
+                <p class="section-subtitle">Latest edits — short form & social content</p>
+            </div>
+            <div class="videos-grid">
+                <div class="video-card">
+                    <div class="video-container">
+                        <iframe src="https://drive.google.com/file/d/1r8tmc7jglANbFvye1psBdesvV8b2bIhM/preview" allowfullscreen loading="lazy"></iframe>
+                    </div>
+                </div>
+                <div class="video-card">
+                    <div class="video-container">
+                        <iframe src="https://drive.google.com/file/d/14VVyP4j6vUZJzkiqKrt7DkwDldZQ5n6K/preview" allowfullscreen loading="lazy"></iframe>
+                    </div>
+                </div>
+                <div class="video-card">
+                    <div class="video-container">
+                        <iframe src="https://drive.google.com/file/d/1Mo7hOVS32HYVwPa7VB8K9iMOxTee-K3L/preview" allowfullscreen loading="lazy"></iframe>
+                    </div>
+                </div>
+                <div class="video-card">
+                    <div class="video-container">
+                        <iframe src="https://drive.google.com/file/d/1n861x_AwXPniZblwzQU-auVSVFgDiYOE/preview" allowfullscreen loading="lazy"></iframe>
+                    </div>
+                </div>
+                <div class="video-card">
+                    <div class="video-container">
+                        <iframe src="https://drive.google.com/file/d/1oUiAczWZWqjbt1NHD83Gg55Z7smYkL5g/preview" allowfullscreen loading="lazy"></iframe>
+                    </div>
+                </div>
+                <div class="video-card">
+                    <div class="video-container">
+                        <iframe src="https://drive.google.com/file/d/1tQ14tJcES9ncxSbyyYiJpkgp9vcUFKEW/preview" allowfullscreen loading="lazy"></iframe>
+                    </div>
+                </div>
+                <div class="video-card">
+                    <div class="video-container">
+                        <iframe src="https://drive.google.com/file/d/1gZx0FUutjEkt2R2EgHc77AEWfIQUsLmK/preview" allowfullscreen loading="lazy"></iframe>
+                    </div>
+                    <div class="video-info">
+                        <div class="video-badge">AI GENERATED</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="vlog-edits" class="reveal">
+            <div class="section-header">
+                <h2>Vlog Edits</h2>
+                <p class="section-subtitle">Cinematic vlog edits — storytelling through travel & lifestyle content</p>
+            </div>
+            <div class="featured-videos-grid">
+                <div class="featured-video-card">
+                    <div class="youtube-container" onclick="playVideo('LL8Q0BEpwok', this)" style="cursor:pointer;background-image:url('https://img.youtube.com/vi/LL8Q0BEpwok/maxresdefault.jpg');background-size:cover;background-position:center;">
+                        <div class="play-button"><i class="fas fa-play"></i></div>
+                    </div>
+                </div>
+                <div class="featured-video-card">
+                    <div class="youtube-container" onclick="playVideo('GJvQhSuZ2Dk', this)" style="cursor:pointer;background-image:url('https://img.youtube.com/vi/GJvQhSuZ2Dk/maxresdefault.jpg');background-size:cover;background-position:center;">
+                        <div class="play-button"><i class="fas fa-play"></i></div>
+                    </div>
+                </div>
+                <div class="featured-video-card">
+                    <div class="youtube-container" onclick="playVideo('LKd5ucw59g0', this)" style="cursor:pointer;background-image:url('https://img.youtube.com/vi/LKd5ucw59g0/maxresdefault.jpg');background-size:cover;background-position:center;">
+                        <div class="play-button"><i class="fas fa-play"></i></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="reveal">
+            <div class="section-header">
+                <h2>About</h2>
+            </div>
+            <div class="about-card">
+                <p class="about-text">I'm <strong>Faraz</strong>, a passionate video editor and graphic designer based in Aligarh. My expertise spans across video editing, motion graphics, YouTube content creation, and digital design. I've spent years honing my craft, working with educational institutes, corporate brands, and content creators to bring their vision to life.</p>
+                <p class="about-text">With my YouTube channel <strong>@farazpsd</strong>, I share knowledge and inspiration with a community of 148K+ subscribers. My work focuses on creating visually compelling content that tells stories and drives engagement.</p>
+                <div class="current-role">
+                    <div class="role-title">Currently</div>
+                    <div><strong>Video Grapher, Editor & Graphic Designer</strong> at <strong>Image Classes Aligarh</strong> — Producing high-quality educational video content, managing visual identity, and designing engaging graphics for one of Aligarh's leading educational institutes.</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="services" class="reveal">
+            <div class="section-header">
+                <h2>What I Do</h2>
+            </div>
+            <div class="services-grid">
+                <div class="service-item">Video Editing</div>
+                <div class="service-item">Motion Graphics</div>
+                <div class="service-item">Graphic Design</div>
+                <div class="service-item">YouTube Thumbnails</div>
+                <div class="service-item">Color Grading</div>
+                <div class="service-item">Visual Identity</div>
+                <div class="service-item">Social Media Content</div>
+                <div class="service-item">Typography</div>
+            </div>
+        </section>
+
+        <section id="contact" class="reveal">
+            <div class="contact-cta">
+                <h2>Let's create something great</h2>
+                <p>Open for freelance projects in video editing, motion graphics, and graphic design. Reach out anytime.</p>
+                <div class="contact-buttons">
+                    <a href="https://www.instagram.com/farazpsd_/" class="contact-btn">
+                        <i class="fab fa-instagram"></i> Message on Instagram
+                    </a>
+                    <a href="https://api.whatsapp.com/send?phone=917906787514&text=Hey%2C%20Faraz" class="contact-btn">
+                        <i class="fab fa-whatsapp"></i> Message on WhatsApp
+                    </a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <p><strong>faraz.</strong> — Video Editor & Graphic Designer · Aligarh, India</p>
+            <div class="footer-links">
+                <a href="https://www.youtube.com/c/Farazpsd" class="footer-link">YouTube</a>
+                <a href="https://www.instagram.com/farazpsd_/" class="footer-link">Instagram</a>
+                <a href="https://www.youtube.com/@imageclasses" class="footer-link">Image Classes</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function playVideo(videoId, element) {
+            const iframe = document.createElement('iframe');
+            iframe.width = '100%'; iframe.height = '100%';
+            iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+            iframe.frameBorder = '0';
+            iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+            iframe.allowFullscreen = true;
+            element.innerHTML = '';
+            element.appendChild(iframe);
+        }
+
+        // Dark Mode
+        const themeToggle = document.getElementById('themeToggle');
+        const currentTheme = localStorage.getItem('theme') || 'light';
+        if (currentTheme === 'dark') {
+            document.body.classList.add('dark-mode');
+            themeToggle.classList.add('dark');
+            themeToggle.innerHTML = '<div class="theme-toggle-icon">🌙</div>';
+        } else {
+            themeToggle.innerHTML = '<div class="theme-toggle-icon">☀️</div>';
+        }
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            themeToggle.classList.toggle('dark');
+            const isDark = document.body.classList.contains('dark-mode');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            themeToggle.innerHTML = isDark ? '<div class="theme-toggle-icon">🌙</div>' : '<div class="theme-toggle-icon">☀️</div>';
+        });
+
+        // Scroll reveal
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
